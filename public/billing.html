@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales & Billing | ALFISHA BOOKSTORE</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .billing-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 25px;
+        }
+
+        .billing-banner {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .billing-banner img {
+            width: 180px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .billing-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .billing-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .billing-form input,
+        .billing-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .billing-form button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #454545;
+            color: white;
+        }
+
+        .billing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        .billing-table th,
+        .billing-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .bill-total {
+            text-align: right;
+            margin: 25px 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .billing-message {
+            margin-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .billing-form {
+                grid-template-columns: 1fr;
+            }
+
+            .billing-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .billing-table {
+                font-size: 13px;
+            }
+        }
+        
+.billing-image {
+    width: 220px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.site-header {
+    width: 100%;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.brand-mark {
+    font-size: 24px;
+}
+
+.nav-container nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nav-container nav a {
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .billing-image {
+        width: 100%;
+        height: 190px;
+    }
+
+    .nav-container {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+.site-footer {
+    margin-top: 55px;
+    padding: 28px 5%;
+    text-align: center;
+    border-top: 1px solid #dddddd;
+    color: #555555;
+}
+
+.site-footer p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+    </style>
+</head>
+
+<body>
+    
+<header class="site-header">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <span class="brand-mark">A.</span>
+            <span>ALFISHA BOOKSTORE</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="books.html">Book Collection</a>
+            <a href="categories.html">Categories</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="billing-container">
+
+        <section class="billing-banner">
+            <img src="images/billing.jpg"
+                 alt="Books arranged at a bookstore checkout">
+
+            <div>
+                <h1>Sales & Billing</h1>
+                <p>Create customer bills and record bookstore sales.</p>
+            </div>
+        </section>
+
+        <form id="billingForm" class="billing-form">
+            <div>
+                <label for="customerName">Customer Name</label>
+                <input type="text" id="customerName"
+                       placeholder="Enter customer name" required>
+            </div>
+
+            <div>
+                <label for="bookSelect">Select Book</label>
+                <select id="bookSelect" required>
+                    <option value="">Loading books...</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity"
+                       min="1" step="1" value="1" required>
+            </div>
+
+            <div style="display:flex;align-items:end;">
+                <button type="button" id="addBookButton">
+                    Add Book to Bill
+                </button>
+            </div>
+        </form>
+
+        <table class="billing-table">
+            <thead>
+                <tr>
+                    <th>Book</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="billItems">
+                <tr>
+                    <td colspan="5">No books added yet.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bill-total">
+            Total: ₹<span id="billTotal">0.00</span>
+        </div>
+
+        <button type="button" id="completeSale"
+                style="padding:12px 20px;cursor:pointer;">
+            Complete Sale
+        </button>
+
+        <button type="button" id="printBill"
+                style="padding:12px 20px;cursor:pointer;">
+            Print Bill
+        </button>
+
+        <p id="billingMessage" class="billing-message"
+           role="status"></p>
+
+    </main>
+
+    <script>
+        let books = [];
+        let cart = [];
+        let completedBill = null;
+
+        const bookSelect = document.getElementById("bookSelect");
+        const quantityInput = document.getElementById("quantity");
+        const billItems = document.getElementById("billItems");
+        const billTotal = document.getElementById("billTotal");
+        const message = document.getElementById("billingMessage");
+
+        async function loadBooks() {
+            try {
+                const response = await fetch("/api/books");
+
+                if (!response.ok) {
+                    throw new Error("Could not load books.");
+                }
+
+                books = await response.json();
+
+                bookSelect.innerHTML =
+                    '<option value="">Select a book</option>';
+
+                books.forEach(book => {
+                    const option = document.createElement("option");
+                    option.value = book.book_id;
+                    option.textContent =
+                        `${book.title} — ₹${book.price} (Stock: ${book.stock})`;
+                    bookSelect.appendChild(option);
+                });
+            } catch (error) {
+                bookSelect.innerHTML =
+                    '<option value="">Unable to load books</option>';
+                message.textContent = error.message;
+            }
+        }
+
+        function renderBill() {
+            billItems.innerHTML = "";
+
+            if (cart.length === 0) {
+                billItems.innerHTML =
+                    '<tr><td colspan="5">No books added yet.</td></tr>';
+            }
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+
+                const row = document.createElement("tr");
+                const values = [
+                    item.title,
+                    "₹" + item.price.toFixed(2),
+                    item.quantity,
+                    "₹" + subtotal.toFixed(2)
+                ];
+
+                values.forEach(value => {
+                    const cell = document.createElement("td");
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
+
+                const actionCell = document.createElement("td");
+                const removeButton = document.createElement("button");
+                removeButton.type = "button";
+                removeButton.textContent = "Remove";
+                removeButton.onclick = () => {
+                    cart.splice(index, 1);
+                    renderBill();
+                };
+
+                actionCell.appendChild(removeButton);
+                row.appendChild(actionCell);
+                billItems.appendChild(row);
+            });
+
+            billTotal.textContent = total.toFixed(2);
+        }
+
+        document.getElementById("addBookButton").onclick = () => {
+            const bookId = Number(bookSelect.value);
+            const quantity = Number(quantityInput.value);
+            const book = books.find(
+                item => Number(item.book_id) === bookId
+            );
+
+            if (!book) {
+                message.textContent = "Please select a book.";
+                return;
+            }
+
+            if (!Number.isInteger(quantity) || quantity < 1) {
+                message.textContent = "Enter a valid quantity.";
+                return;
+            }
+
+            const existing = cart.find(
+                item => Number(item.book_id) === bookId
+            );
+
+            const alreadyAdded = existing ? existing.quantity : 0;
+
+            if (quantity + alreadyAdded > Number(book.stock)) {
+                message.textContent = "Not enough stock available.";
+                return;
+            }
+
+            if (existing) {
+                existing.quantity += quantity;
+            } else {
+                cart.push({
+                    book_id: book.book_id,
+                    title: book.title,
+                    price: Number(book.price),
+                    quantity: quantity
+                });
+            }
+
+            message.textContent = "";
+            renderBill();
+        };
+
+        document.getElementById("completeSale").onclick = async () => {
+            const customerName =
+                document.getElementById("customerName").value.trim();
+
+            if (!customerName || cart.length === 0) {
+                message.textContent =
+                    "Enter the customer name and add at least one book.";
+                return;
+            }
+
+            try {
+                const response = await fetch("/sales/create", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        customer_name: customerName,
+                        items: cart.map(item => ({
+                            book_id: item.book_id,
+                            quantity: item.quantity
+                        }))
+                    })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || "Sale failed.");
+                }
+
+                completedBill = {
+                    sale_id: result.sale_id,
+                    customer_name: customerName,
+                    items: cart.map(item => ({ ...item })),
+                    total: Number(result.total_amount)
+                };
+
+                message.textContent =
+                    "Sale completed successfully! Bill No: " +
+                    completedBill.sale_id;
+
+                cart = [];
+                renderBill();
+                await loadBooks();
+            } catch (error) {
+                message.textContent = error.message;
+            }
+        };
+
+        document.getElementById("printBill").onclick = () => {
+            if (!completedBill) {
+                message.textContent =
+                    "Complete a sale before printing the bill.";
+                return;
+            }
+
+            const billWindow = window.open("", "_blank");
+
+            if (!billWindow) {
+                message.textContent =
+                    "Allow pop-ups to print the bill.";
+                return;
+            }
+
+            const safe = value => String(value).replace(
+                /[&<>"']/g,
+                char => ({
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                })[char]
+            );
+
+            const rows = completedBill.items.map(item => `
+                <tr>
+                    <td>${safe(item.title)}</td>
+                    <td>₹${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${(item.price * item.quantity).toFixed(2)}</td>
+                </tr>
+            `).join("");
+
+            billWindow.document.write(`
+                <html>
+                <head>
+                    <title>Bookstore Bill</title>
+                    <style>
+                        body { font-family: Arial; padding: 25px; }
+                        table { width: 100%; border-collapse: collapse; }
+                        th, td { border-bottom: 1px solid #ddd;
+                                 padding: 10px; text-align: left; }
+                        .total { text-align: right; margin-top: 25px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>ALFISHA BOOKSTORE</h1>
+                    <h2>Sales Bill</h2>
+                    <p>Bill No: ${safe(completedBill.sale_id)}</p>
+                    <p>Customer: ${safe(completedBill.customer_name)}</p>
+                    <table>
+                        <thead>
+                            <tr><th>Book</th><th>Price</th>
+                            <th>Quantity</th><th>Subtotal</th></tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                    <h2 class="total">
+                        Total: ₹${completedBill.total.toFixed(2)}
+                    </h2>
+                    <p>Thank you for shopping with us!</p>
+                    <script>window.onload = () => window.print();<\/script>
+                </body>
+                </html>
+            `);
+
+            billWindow.document.close();
+        };
+
+        loadBooks();
+    </script>
+    
+<footer class="site-footer">
+    <div>
+        <strong>ALFISHA BOOKSTORE</strong>
+        <p>Making every book accessible to every reader.</p>
+        <p>Developed by Alfisha · 2026</p>
+    </div>
+</footer>
+
+</body>
+</html>

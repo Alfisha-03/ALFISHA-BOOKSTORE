@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn about the purpose, mission and vision of ALFISHA BOOKSTORE.">
+
+    <title>About Us | ALFISHA BOOKSTORE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ABOUT INTRODUCTION */
+
+        .about-intro {
+            padding: 65px 0 35px;
+            background: #f6f5f1;
+        }
+
+        .about-breadcrumb {
+            font-size: 13px;
+            color: #73776f;
+            margin-bottom: 30px;
+        }
+
+        .about-breadcrumb a {
+            color: #526a5a;
+            text-decoration: none;
+        }
+
+        .about-intro-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-intro-text .eyebrow {
+            color: #637966;
+            letter-spacing: 2px;
+        }
+
+        .about-intro-text h1 {
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            line-height: 1.12;
+            color: #263a30;
+            margin: 20px 0;
+        }
+
+        .about-intro-text h1 span {
+            color: #788b70;
+        }
+
+        .about-intro-text p {
+            max-width: 520px;
+            color: #5f655e;
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        .about-intro-image {
+            position: relative;
+        }
+
+        .about-intro-image img {
+            display: block;
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .about-photo-label {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            padding: 13px 18px;
+            background: white;
+            color: #263a30;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* WHO WE ARE */
+
+        .about-story {
+            padding: 85px 0;
+            background: white;
+        }
+
+        .about-story-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 65px;
+            align-items: start;
+        }
+
+        .about-section-label {
+            color: #718477;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about-story h2,
+        .about-purpose h2,
+        .about-system h2,
+        .about-gallery h2 {
+            color: #293b31;
+            font-size: clamp(1.9rem, 3vw, 2.7rem);
+            line-height: 1.25;
+            margin: 15px 0 20px;
+        }
+
+        .about-story-copy p,
+        .about-purpose p,
+        .about-system p {
+            color: #646960;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .about-quote {
+            margin-top: 25px;
+            padding: 22px 24px;
+            border-left: 3px solid #82917b;
+            background: #f6f5f1;
+            color: #34483a;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* MISSION AND VISION */
+
+        .about-purpose {
+            padding: 75px 0;
+            background: #f2f1eb;
+        }
+
+        .about-purpose-heading {
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .about-purpose-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .about-purpose-card {
+            padding: 35px;
+            background: white;
+            border: 1px solid #e3e2da;
+        }
+
+        .about-purpose-card .purpose-number {
+            display: block;
+            margin-bottom: 22px;
+            color: #7b8c77;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .about-purpose-card h3 {
+            color: #293b31;
+            font-size: 23px;
+            margin: 0 0 14px;
+        }
+
+        .about-purpose-card p {
+            margin: 0;
+        }
+
+        /* PERSONAL IMAGE SECTION */
+
+        .about-personal {
+            padding: 65px 0;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .about-personal-content {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 55px;
+            align-items: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Small portrait with an arch-shaped frame */
+
+        .about-personal-image {
+            position: relative;
+            width: 210px;
+            height: 275px;
+            margin: 20px auto;
+            padding: 7px;
+            background: #e9ece4;
+            border: 1px solid #9aa994;
+            border-radius: 115px 115px 8px 8px;
+            isolation: isolate;
+            animation: archFloat 5s ease-in-out infinite;
+            transition: box-shadow 0.4s ease;
+        }
+
+        /* Animated decorative outline */
+
+        .about-personal-image::before {
+            content: "";
+            position: absolute;
+            inset: -12px;
+            border: 2px solid transparent;
+            border-top-color: #82977e;
+            border-right-color: #82977e;
+            border-radius: 130px 130px 18px 18px;
+            pointer-events: none;
+            z-index: -1;
+            animation: archGlow 4s ease-in-out infinite;
+        }
+
+        /* Subtle offset accent */
+
+        .about-personal-image::after {
+            content: "";
+            position: absolute;
+            width: 55px;
+            height: 85px;
+            right: -17px;
+            bottom: 10px;
+            background: #dfe5d9;
+            border-radius: 0 0 15px 0;
+            z-index: -2;
+        }
+
+        .about-personal-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border: 3px solid #ffffff;
+            border-radius: 107px 107px 4px 4px;
+            box-shadow: 0 10px 24px rgba(41, 59, 49, 0.12);
+            transition: transform 0.4s ease,
+                        box-shadow 0.4s ease;
+        }
+
+        .about-personal-image:hover img {
+            transform: scale(1.025);
+            box-shadow: 0 16px 32px rgba(41, 59, 49, 0.20);
+        }
+
+        .about-personal-image:hover::before {
+            border-top-color: #a3b29a;
+            border-right-color: #a3b29a;
+        }
+
+        @keyframes archFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes archGlow {
+            0%, 100% {
+                opacity: 0.65;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.025);
+            }
+        }
+
+        .about-personal-text {
+            max-width: 480px;
+        }
+
+        .about-personal-text h2 {
+            color: #293b31;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.3;
+            margin: 15px 0 20px;
+        }
+
+        .about-personal-text p {
+            color: #646960;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        /* HOW THE SYSTEM HELPS */
+
+        .about-system {
+            padding: 85px 0;
+            background: white;
+        }
+
+        .about-system-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-system-image img {
+            display: block;
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+        }
+
+        .about-system-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .about-system-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #e7e7e0;
+            color: #48564b;
+            line-height: 1.7;
+        }
+
+        .about-system-list li strong {
+            display: block;
+            color: #293b31;
+            margin-bottom: 4px;
+        }
+
+        /* BOOKSTORE GALLERY */
+
+        .about-gallery {
+            padding: 75px 0;
+            background: #f6f5f1;
+        }
+
+        .about-gallery-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .about-gallery-heading p {
+            max-width: 420px;
+            color: #646960;
+            line-height: 1.8;
+        }
+
+        .about-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .about-gallery-item {
+            margin: 0;
+            background: white;
+            overflow: hidden;
+        }
+
+        .about-gallery-item img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .about-gallery-item figcaption {
+            padding: 15px 16px;
+            color: #35473a;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* CLOSING */
+
+        .about-closing {
+            padding: 55px 0;
+            background: #293d32;
+            color: white;
+        }
+
+        .about-closing-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .about-closing .about-section-label {
+            color: #d9c9a6;
+        }
+
+        .about-closing h2 {
+            color: white;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            margin: 12px 0;
+        }
+
+        .about-closing p {
+            color: #e0e5df;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .about-closing .button {
+            flex-shrink: 0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 800px) {
+            .about-intro-grid,
+            .about-story-grid,
+            .about-system-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-purpose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-personal-content {
+                grid-template-columns: 220px minmax(0, 1fr);
+                gap: 30px;
+            }
+
+            .about-gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-closing-content {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 520px) {
+            .about-intro {
+                padding-top: 40px;
+            }
+
+            .about-intro-image img {
+                height: 280px;
+            }
+
+            .about-story,
+            .about-system {
+                padding: 55px 0;
+            }
+
+            .about-purpose,
+            .about-gallery {
+                padding: 55px 0;
+            }
+
+            .about-personal {
+                padding: 50px 0;
+            }
+
+            .about-purpose-card {
+                padding: 25px;
+            }
+
+            .about-system-image img {
+                height: 290px;
+            }
+
+            .about-personal-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .about-personal-image {
+                width: 190px;
+                height: 250px;
+            }
+
+            .about-personal-text {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .about-gallery-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .about-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            .about-personal-image,
+            .about-personal-image::before {
+                animation: none;
+            }
+
+            .about-personal-image,
+            .about-personal-image img {
+                transition: none;
+            }
+        }
+        
+/* PERSONAL SECTION LAYOUT */
+
+.about-personal-content {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 55px;
+    align-items: center;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* BIGGER ARCH-SHAPED PHOTO */
+
+.about-personal-image {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin: 20px auto;
+    padding: 7px;
+    background: #e9ece4;
+    border: 1px solid #9aa994;
+    border-radius: 155px 155px 8px 8px;
+    isolation: isolate;
+    animation: archFloat 5s ease-in-out infinite;
+    transition: box-shadow 0.4s ease;
+}
+
+/* Animated arch outline */
+
+.about-personal-image::before {
+    content: "";
+    position: absolute;
+    inset: -13px;
+    border: 2px solid transparent;
+    border-top-color: #82977e;
+    border-right-color: #82977e;
+    border-radius: 160px 160px 18px 18px;
+    pointer-events: none;
+    z-index: -1;
+    animation: archGlow 4s ease-in-out infinite;
+}
+
+/* Photo */
+
+.about-personal-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid #ffffff;
+    border-radius: 137px 137px 4px 4px;
+    box-shadow: 0 10px 24px rgba(41, 59, 49, 0.12);
+    transition: transform 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+/* TABLET */
+
+@media (max-width: 800px) {
+    .about-personal-content {
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 30px;
+    }
+
+    .about-personal-image {
+        width: 235px;
+        height: 310px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+    .about-personal-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .about-personal-image {
+        width: 225px;
+        height: 295px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">A.</span>
+
+                <span class="brand-text">
+                    <strong>ALFISHA</strong>
+                    <small>BOOKSTORE</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="books.html">Book Collection</a>
+                <a href="categories.html">Categories</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="about.html" class="active">About</a>
+            </nav>
+
+            <a href="add-book.html" class="button button-primary nav-button">
+                Add New Book
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- About Introduction -->
+        <section class="about-intro">
+            <div class="container">
+
+                <div class="about-breadcrumb">
+                    <a href="index.html">Home</a> / About Us
+                </div>
+
+                <div class="about-intro-grid">
+
+                    <div class="about-intro-text">
+                        <span class="eyebrow">OUR STORY</span>
+
+                        <h1>
+                            More than books.
+                            <span>Better organization.</span>
+                        </h1>
+
+                        <p>
+                            ALFISHA BOOKSTORE is designed to bring book
+                            information and everyday inventory tasks together.
+                            Our goal is to make managing a book collection
+                            more organized, clear and convenient.
+                        </p>
+                    </div>
+
+                    <div class="about-intro-image">
+                        <img
+                            src="images/bookstore.jpg"
+                            alt="Bookstore interior"
+                        >
+
+                        <div class="about-photo-label">
+                            ALFISHA BOOKSTORE · OUR STORY
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We Are -->
+        <section class="about-story">
+            <div class="container about-story-grid">
+
+                <div>
+                    <span class="about-section-label">
+                        01 — Who We Are
+                    </span>
+
+                    <h2>
+                        A thoughtful approach to book management.
+                    </h2>
+                </div>
+
+                <div class="about-story-copy">
+                    <p>
+                        ALFISHA BOOKSTORE is a web-based bookstore management
+                        project created to organize book records through
+                        a clear and accessible interface.
+                    </p>
+
+                    <p>
+                        The system connects a website with a database to
+                        maintain information such as book titles, authors,
+                        categories, prices and stock quantities.
+                    </p>
+
+                    <p>
+                        Separate pages help users browse books, explore
+                        categories, add new records, search for information
+                        and review inventory details.
+                    </p>
+
+                    <div class="about-quote">
+                        “Our purpose is simple: make book information easier
+                        to organize, find and maintain.”
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Mission and Vision -->
+        <section class="about-purpose">
+            <div class="container">
+
+                <div class="about-purpose-heading">
+                    <span class="about-section-label">
+                        02 — Our Purpose
+                    </span>
+
+                    <h2>
+                        Built around clarity and convenience.
+                    </h2>
+
+                    <p>
+                        Our mission and vision guide the way the bookstore
+                        management system is organized.
+                    </p>
+                </div>
+
+                <div class="about-purpose-grid">
+
+                    <article class="about-purpose-card">
+                        <span class="purpose-number">OUR MISSION</span>
+
+                        <h3>Make book management simpler.</h3>
+
+                        <p>
+                            Provide a straightforward workspace for maintaining
+                            book records, reviewing inventory and accessing
+                            collection details without unnecessary complexity.
+                        </p>
+                    </article>
+
+                    <article class="about-purpose-card">
+                        <span class="purpose-number">OUR VISION</span>
+
+                        <h3>Create a well-organized collection.</h3>
+
+                        <p>
+                            Build a reliable and easy-to-use bookstore
+                            management experience where book information
+                            can be maintained in a structured way.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Image and Creator Text -->
+        <section class="about-personal">
+            <div class="container about-personal-content">
+
+                <div class="about-personal-image">
+                    <img
+                        src="images/alfisha.jpg"
+                        alt="Alfisha, creator of ALFISHA BOOKSTORE"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="about-personal-text">
+                    <span class="about-section-label">
+                        ABOUT THE CREATOR
+                    </span>
+
+                    <h2>
+                        A personal touch behind the project.
+                    </h2>
+
+                    <p>
+                        ALFISHA BOOKSTORE is a project developed to make
+                        book information and inventory management more
+                        organized and convenient.
+                    </p>
+
+                    <p>
+                        This project reflects an interest in web development,
+                        database management and creating simple, useful
+                        digital solutions.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- How Our System Helps -->
+        <section class="about-system">
+            <div class="container about-system-grid">
+
+                <div class="about-system-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1100&q=90"
+                        alt="A quiet library with books arranged on shelves"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="about-system-content">
+                    <span class="about-section-label">
+                        03 — The System
+                    </span>
+
+                    <h2>
+                        Everything has its place.
+                    </h2>
+
+                    <p>
+                        The website provides separate areas for common
+                        bookstore activities, making information easier
+                        to access and maintain.
+                    </p>
+
+                    <ul class="about-system-list">
+                        <li>
+                            <strong>Book Collection</strong>
+                            View available book records and their details.
+                        </li>
+
+                        <li>
+                            <strong>Categories</strong>
+                            Explore books through the available categories.
+                        </li>
+
+                        <li>
+                            <strong>Inventory</strong>
+                            Review stock quantities and stock status.
+                        </li>
+
+                        <li>
+                            <strong>Book Record Management</strong>
+                            Use the available forms to add and update records.
+                        </li>
+
+                        <li>
+                            <strong>Search</strong>
+                            Find book information through the search page.
+                        </li>
+                    </ul>
+
+                    <a href="inventory.html" class="button button-primary">
+                        Explore Inventory →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bookstore Image Gallery -->
+        <section class="about-gallery">
+            <div class="container">
+
+                <div class="about-gallery-heading">
+                    <div>
+                        <span class="about-section-label">
+                            04 — The World of Books
+                        </span>
+
+                        <h2>
+                            Spaces made for discovery.
+                        </h2>
+                    </div>
+
+                    <p>
+                        From organized shelves to quiet reading corners,
+                        books bring knowledge, imagination and discovery
+                        into everyday life.
+                    </p>
+                </div>
+
+                <div class="about-gallery-grid">
+
+                    <figure class="about-gallery-item">
+                        <img
+                            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85"
+                            alt="A calm and organized interior space"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            A space for organization
+                        </figcaption>
+                    </figure>
+
+                    <figure class="about-gallery-item">
+                        <img
+                            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=85"
+                            alt="Books arranged together"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            Collections worth exploring
+                        </figcaption>
+                    </figure>
+
+                    <figure class="about-gallery-item">
+                        <img
+                            src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=85"
+                            alt="Books and study materials"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            Knowledge in every book
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing -->
+        <section class="about-closing">
+            <div class="container about-closing-content">
+
+                <div>
+                    <span class="about-section-label">
+                        ALFISHA BOOKSTORE
+                    </span>
+
+                    <h2>
+                        Organized records. Easier management.
+                    </h2>
+
+                    <p>
+                        Explore the collection and discover the available
+                        bookstore management features.
+                    </p>
+                </div>
+
+                <a href="books.html" class="button button-white">
+                    Explore the Collection →
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <a href="index.html" class="footer-brand">
+                ALFISHA BOOKSTORE
+            </a>
+
+            <p>Bookstore Management System</p>
+
+            <p class="footer-credit">
+                Developed by Alfisha · 2026
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>

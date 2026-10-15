@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="ALFISHA BOOKSTORE - Manage books, categories, inventory and book records in one place.">
+
+    <title>ALFISHA BOOKSTORE | Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Home page enhancements */
+        .bookstore-banner {
+            position: relative;
+            min-height: 440px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: #24352f;
+            color: white;
+        }
+
+        .bookstore-banner > img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .bookstore-banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(15, 30, 25, 0.92) 0%,
+                rgba(15, 30, 25, 0.70) 48%,
+                rgba(15, 30, 25, 0.15) 100%
+            );
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            width: min(1180px, 90%);
+            margin: auto;
+            padding: 75px 0;
+        }
+
+        .banner-content .eyebrow {
+            color: #e3cba2;
+        }
+
+        .banner-content h1 {
+            max-width: 700px;
+            margin: 18px 0;
+            font-size: clamp(2.5rem, 5vw, 4.3rem);
+            line-height: 1.12;
+            color: white;
+        }
+
+        .banner-content h1 span {
+            color: #e3cba2;
+        }
+
+        .banner-content p {
+            max-width: 580px;
+            margin-bottom: 28px;
+            color: #f0f1ed;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .banner-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .banner-content .button-secondary {
+            color: white;
+            border-color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .services-section {
+            padding: 75px 0;
+            background: #f6f5f1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 26px;
+            margin-top: 38px;
+        }
+
+        .service-card {
+            overflow: hidden;
+            background: white;
+            border: 1px solid #e6e5df;
+            border-radius: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(30, 40, 35, 0.09);
+        }
+
+        .service-card img {
+            display: block;
+            width: 100%;
+            height: 215px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 25px;
+        }
+
+        .service-card-content h3 {
+            margin: 10px 0;
+        }
+
+        .service-card-content p {
+            line-height: 1.7;
+        }
+
+        .service-number {
+            color: #718477;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .service-card .text-link {
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        .home-about {
+            padding: 75px 0;
+        }
+
+        .home-about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .home-about-image img {
+            display: block;
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .home-about-content h2 {
+            margin: 14px 0;
+        }
+
+        .home-about-content p {
+            line-height: 1.8;
+        }
+
+        .home-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 25px 0;
+        }
+
+        .benefit-item {
+            padding: 16px;
+            background: #f6f5f1;
+            border-left: 3px solid #718477;
+            border-radius: 4px;
+        }
+
+        .benefit-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .benefit-item span {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .home-process {
+            padding: 65px 0;
+            background: #f6f5f1;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            margin-top: 32px;
+        }
+
+        .process-item {
+            padding: 25px;
+            background: white;
+            border: 1px solid #e6e5df;
+            border-radius: 8px;
+        }
+
+        .process-item h3 {
+            margin: 12px 0 8px;
+        }
+
+        .process-item p {
+            line-height: 1.7;
+        }
+
+        @media (max-width: 800px) {
+            .services-grid,
+            .process-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .home-about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .bookstore-banner {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .services-grid,
+            .process-grid,
+            .home-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-content {
+                padding: 55px 0;
+            }
+
+            .service-card img {
+                height: 190px;
+            }
+
+            .home-about-image img {
+                height: 270px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a href="index.html" class="brand">
+            
+<div class="brand-mark">📚</div>
+
+                <span class="brand-text">
+                    <strong>ALFISHA</strong>
+                    <small>BOOKSTORE MANAGEMENT SYSTEM</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html" class="active">Home</a>
+                <a href="books.html">Book Collection</a>
+                <a href="categories.html">Categories</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="about.html">About</a>
+            </nav>
+
+            <a href="add-book.html" class="button button-primary nav-button">
+                Add New Book
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- BOOKSTORE IMAGE BANNER -->
+        <section class="bookstore-banner">
+
+            <img
+                src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1800&q=90"
+                alt="Beautiful bookstore with tall bookshelves"
+            >
+
+            <div class="banner-content">
+
+                <span class="eyebrow">WELCOME TO ALFISHA BOOKSTORE</span>
+
+                <h1>
+                    Every book deserves
+                    <span>its place.</span>
+                </h1>
+
+                <p>
+                    Discover a smarter way to organize your bookstore.
+                    Manage book details, explore categories, maintain stock
+                    records, and keep your collection organized in one place.
+                </p>
+
+                <div class="banner-actions">
+                    <a href="books.html" class="button button-primary">
+                        Explore Book Collection →
+                    </a>
+
+                    <a href="inventory.html" class="button button-secondary">
+                        Manage Inventory
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="intro-section section-padding">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">YOUR BOOKSTORE WORKSPACE</span>
+
+                    <h2>Everything your bookstore needs.</h2>
+
+                    <p>
+                        From maintaining book records to checking stock,
+                        access the essential tools for managing your collection.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+
+                    <article class="feature-card">
+
+                        <img
+                            src="images/book-collection.jpg"
+                            alt="Books displayed together"
+                            loading="lazy"
+                        >
+
+                        <div class="feature-card-content">
+
+                            <span class="card-number">01</span>
+
+                            <h3>Book Collection</h3>
+
+                            <p>
+                                View book titles, authors, categories,
+                                prices, and other available book details.
+                            </p>
+
+                            <a href="books.html" class="text-link">
+                                Browse books →
+                            </a>
+
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+
+                        <img
+                            src="images/book-categories.jpg"
+                            alt="A selection of books"
+                            loading="lazy"
+                        >
+
+                        <div class="feature-card-content">
+
+                            <span class="card-number">02</span>
+
+                            <h3>Book Categories</h3>
+
+                            <p>
+                                Explore the available book categories
+                                and find the collection you need.
+                            </p>
+
+                            <a href="categories.html" class="text-link">
+                                Explore categories →
+                            </a>
+
+                        </div>
+                    </article>
+
+                    <article class="feature-card">
+
+                        <img
+                            src="images/inventory-management.jpg"
+                            alt="An open book on a reading desk"
+                            loading="lazy"
+                        >
+
+                        <div class="feature-card-content">
+
+                            <span class="card-number">03</span>
+
+                            <h3>Inventory Management</h3>
+
+                            <p>
+                                Check available quantities, identify
+                                low-stock books, and review stock information.
+                            </p>
+
+                            <a href="inventory.html" class="text-link">
+                                View inventory →
+                            </a>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ALL AVAILABLE SERVICES -->
+        <section class="services-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">OUR SERVICES</span>
+
+                    <h2>Tools for everyday bookstore tasks.</h2>
+
+                    <p>
+                        Use the available pages to maintain your book records
+                        and access important bookstore information.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+
+                    <article class="service-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=850&q=85"
+                            alt="Books arranged for a collection"
+                            loading="lazy"
+                        >
+
+                        <div class="service-card-content">
+                            <span class="service-number">SERVICE 01</span>
+                            <h3>Browse Books</h3>
+
+                            <p>
+                                Explore the book collection and view the
+                                available book information.
+                            </p>
+
+                            <a href="books.html" class="text-link">
+                                View collection →
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=850&q=85"
+                            alt="Books arranged on a library shelf"
+                            loading="lazy"
+                        >
+
+                        <div class="service-card-content">
+                            <span class="service-number">SERVICE 02</span>
+                            <h3>Add New Books</h3>
+
+                            <p>
+                                Enter the details of new books to add
+                                them to your bookstore records.
+                            </p>
+
+                            <a href="add-book.html" class="text-link">
+                                Add a book →
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=850&q=85"
+                            alt="Organized shelves in a library"
+                            loading="lazy"
+                        >
+
+                        <div class="service-card-content">
+                            <span class="service-number">SERVICE 03</span>
+                            <h3>Manage Inventory</h3>
+
+                            <p>
+                                Review stock quantities and check which
+                                books are available or need replenishment.
+                            </p>
+
+                            <a href="inventory.html" class="text-link">
+                                Check inventory →
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=850&q=85"
+                            alt="Reading and studying with books"
+                            loading="lazy"
+                        >
+
+                        <div class="service-card-content">
+                            <span class="service-number">SERVICE 04</span>
+                            <h3>Search Books</h3>
+
+                            <p>
+                                Use the bookstore's search page to look
+                                for books using the available search options.
+                            </p>
+
+                            <a href="search.html" class="text-link">
+                                Search now →
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=850&q=85"
+                            alt="Writing and maintaining information"
+                            loading="lazy"
+                        >
+
+                        <div class="service-card-content">
+                            <span class="service-number">SERVICE 05</span>
+                            <h3>Update Book Records</h3>
+
+                            <p>
+                                Open the inventory and use the update option
+                                to edit the details of an existing book.
+                            </p>
+
+                            <a href="inventory.html" class="text-link">
+                                Manage records →
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="service-card">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=850&q=85"
+                            alt="Organized workspace for managing tasks"
+                            loading="lazy"
+                        >
+
+                        <div class="service-card-content">
+                            <span class="service-number">SERVICE 06</span>
+                            <h3>Explore Categories</h3>
+
+                            <p>
+                                Browse the available categories to make
+                                book collections easier to navigate.
+                            </p>
+
+                            <a href="categories.html" class="text-link">
+                                View categories →
+                            </a>
+                        </div>
+
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT THE BOOKSTORE -->
+        <section class="home-about">
+
+            <div class="container home-about-grid">
+
+                <div class="home-about-image">
+
+                    <img
+                        src="images/home.jpg" 
+                        alt="Interior of a spacious library"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="home-about-content">
+
+                    <span class="eyebrow">ABOUT ALFISHA BOOKSTORE</span>
+
+                    <h2>A more organized way to manage books.</h2>
+
+                    <p>
+                        ALFISHA BOOKSTORE is a bookstore management system
+                        designed to make everyday book record management
+                        more straightforward. It brings book information,
+                        categories, and stock details together in one place.
+                    </p>
+
+                    <div class="home-benefits">
+
+                        <div class="benefit-item">
+                            <strong>Book Records</strong>
+                            <span>Maintain organized book information.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <strong>Stock Tracking</strong>
+                            <span>Review quantities and stock status.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <strong>Easy Navigation</strong>
+                            <span>Move between the available pages.</span>
+                        </div>
+
+                        <div class="benefit-item">
+                            <strong>Simple Management</strong>
+                            <span>Add and update book information.</span>
+                        </div>
+
+                    </div>
+
+                    <a href="about.html" class="button button-primary">
+                        Learn About Us →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HOW TO USE THE SYSTEM -->
+        <section class="home-process">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">GETTING STARTED</span>
+
+                    <h2>Manage your collection in three steps.</h2>
+
+                    <p>
+                        Follow a simple process to keep your bookstore records organized.
+                    </p>
+                </div>
+
+                <div class="process-grid">
+
+                    <article class="process-item">
+                        <span class="service-number">STEP 01</span>
+                        <h3>Add Book Details</h3>
+                        <p>
+                            Open Add New Book and enter the information
+                            required by the form.
+                        </p>
+                    </article>
+
+                    <article class="process-item">
+                        <span class="service-number">STEP 02</span>
+                        <h3>Review Your Collection</h3>
+                        <p>
+                            Browse the book collection or search for
+                            a particular book.
+                        </p>
+                    </article>
+
+                    <article class="process-item">
+                        <span class="service-number">STEP 03</span>
+                        <h3>Check and Update Stock</h3>
+                        <p>
+                            Review inventory information and update
+                            book records when needed.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING SECTION -->
+        <section class="closing-section">
+
+            <div class="container closing-content">
+
+                <div>
+                    <span class="eyebrow eyebrow-light">
+                        YOUR BOOKSTORE, ORGANIZED
+                    </span>
+
+                    <h2>Bring every book record together.</h2>
+
+                    <p>
+                        Explore your collection and manage your bookstore
+                        through one convenient workspace.
+                    </p>
+                </div>
+
+                <a href="books.html" class="button button-white">
+                    View Book Collection →
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <a href="index.html" class="footer-brand">
+                ALFISHA BOOKSTORE
+            </a>
+
+            <p>Bookstore Management System</p>
+
+            <p class="footer-credit">
+                Developed by Alfisha · 2026
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

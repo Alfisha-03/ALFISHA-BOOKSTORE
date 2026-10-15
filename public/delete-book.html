@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delete Book | ALFISHA BOOKSTORE</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Delete Book page */
+
+        .delete-page {
+            width: 92%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 35px 0 55px;
+        }
+
+        /* Hero banner */
+
+        .delete-hero {
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            margin-bottom: 35px;
+            overflow: hidden;
+            border: 1px solid #DCE3E0;
+            border-radius: 8px;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(35, 72, 62, 0.94),
+                    rgba(35, 72, 62, 0.55)
+                ),
+                url("images/delete-books.jpg") center/cover no-repeat;
+        }
+
+        .delete-hero-content {
+            max-width: 620px;
+        }
+
+        .delete-hero .eyebrow {
+            color: #D5E5DF;
+            font-size: 10px;
+            font-weight: 750;
+            letter-spacing: 1.6px;
+        }
+
+        .delete-hero h1 {
+            margin: 14px 0;
+            color: #FFFFFF;
+            font-size: clamp(30px, 4vw, 42px);
+            line-height: 1.2;
+        }
+
+        .delete-hero p {
+            max-width: 520px;
+            margin-bottom: 0;
+            color: #F0F5F1;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* Main content */
+
+        .delete-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: stretch;
+        }
+
+        /* Information section */
+
+        .delete-information {
+            padding: 32px;
+            background: #E5EEEB;
+            border: 1px solid #DCE3E0;
+            border-radius: 8px;
+        }
+
+        .delete-information .eyebrow {
+            color: #A77558;
+            font-size: 10px;
+            font-weight: 750;
+            letter-spacing: 1.5px;
+        }
+
+        .delete-information h2 {
+            margin: 12px 0;
+            color: #34434A;
+            font-size: 26px;
+            line-height: 1.4;
+        }
+
+        .delete-information p {
+            color: #69767B;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .delete-information img {
+            display: block;
+            width: 100%;
+            height: 200px;
+            margin-top: 24px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Delete form */
+
+        .delete-form-section {
+            padding: 32px;
+            background: #FFFFFF;
+            border: 1px solid #DCE3E0;
+            border-radius: 8px;
+            box-shadow: 0 5px 18px rgba(52, 67, 74, 0.05);
+        }
+
+        .delete-form-section .eyebrow {
+            color: #A77558;
+            font-size: 10px;
+            font-weight: 750;
+            letter-spacing: 1.5px;
+        }
+
+        .delete-form-section h2 {
+            margin: 12px 0 8px;
+            color: #34434A;
+            font-size: 25px;
+        }
+
+        .delete-form-section .description {
+            margin-bottom: 26px;
+            color: #69767B;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .delete-form-section label {
+            display: block;
+            margin-bottom: 9px;
+            color: #34434A;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .delete-form-section input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 14px;
+            margin-bottom: 22px;
+            border: 1px solid #D1DAD6;
+            border-radius: 5px;
+            background: #FFFFFF;
+            color: #34434A;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .delete-form-section input:focus {
+            outline: none;
+            border-color: #527D78;
+            box-shadow: 0 0 0 3px rgba(82, 125, 120, 0.12);
+        }
+
+        .delete-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .delete-actions button,
+        .delete-actions a {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .delete-actions button {
+            border: 1px solid #A33C35;
+            background: #A33C35;
+            color: #FFFFFF;
+        }
+
+        .delete-actions button:hover {
+            background: #862F29;
+            border-color: #862F29;
+        }
+
+        .delete-actions .cancel-button {
+            border: 1px solid #DCE3E0;
+            background: #FFFFFF;
+            color: #365D59;
+        }
+
+        .delete-actions .cancel-button:hover {
+            background: #E5EEEB;
+        }
+
+        .delete-note {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid #E5EAE7;
+            color: #69767B;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* Responsive layout */
+
+        @media (max-width: 800px) {
+            .delete-content {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .delete-hero {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .delete-page {
+                width: 94%;
+                padding-top: 24px;
+            }
+
+            .delete-hero {
+                min-height: 230px;
+                padding: 24px;
+            }
+
+            .delete-hero h1 {
+                font-size: 29px;
+            }
+
+            .delete-information,
+            .delete-form-section {
+                padding: 23px;
+            }
+
+            .delete-information img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Website header -->
+
+    <header class="site-header">
+        <div class="nav-container">
+
+            <div class="brand">
+                <div class="brand-mark">A</div>
+
+                <div class="brand-text">
+                    <strong>ALFISHA BOOKSTORE</strong>
+                    <small>BOOK MANAGEMENT</small>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="books.html">Book Collection</a>
+                <a href="categories.html">Categories</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="about.html">About</a>
+                <a href="add-book.html">Add New Book</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <div class="delete-page">
+
+            <!-- Hero banner -->
+
+            <section class="delete-hero">
+                <div class="delete-hero-content">
+
+                    <span class="eyebrow">BOOK MANAGEMENT</span>
+
+                    <h1>Remove a Book from Your Collection</h1>
+
+                    <p>
+                        Manage your bookstore collection by removing
+                        books that are no longer required in your
+                        inventory. Check the book ID carefully before
+                        proceeding.
+                    </p>
+
+                </div>
+            </section>
+
+            <!-- Main content -->
+
+            <div class="delete-content">
+
+                <!-- Information section -->
+
+                <section class="delete-information">
+
+                    <span class="eyebrow">INVENTORY MANAGEMENT</span>
+
+                    <h2>Keep Your Collection Updated</h2>
+
+                    <p>
+                        Maintain an organised bookstore inventory by
+                        reviewing book records before removing them.
+                        Always verify the book ID to make sure you
+                        select the correct record.
+                    </p>
+<img
+    src="images/delete-management.jpg"
+    alt="Books being organised for inventory management"
+>
+
+                </section>
+
+                <!-- Delete form -->
+
+                <section class="delete-form-section">
+
+                    <span class="eyebrow">REMOVE BOOK RECORD</span>
+
+                    <h2>Delete a Book</h2>
+
+                    <p class="description">
+                        Enter the unique ID of the book you want
+                        to remove from the database.
+                    </p>
+
+                    <form
+                        action="/books/delete"
+                        method="POST"
+                        onsubmit="return confirm('Are you sure you want to delete this book? This action cannot be undone.');"
+                    >
+
+                        <label for="book_id">Book ID</label>
+
+                        <input
+                            type="number"
+                            id="book_id"
+                            name="book_id"
+                            placeholder="Enter the book ID"
+                            min="1"
+                            step="1"
+                            required
+                        >
+
+                        <div class="delete-actions">
+
+                            <button type="submit">
+                                Delete Book
+                            </button>
+
+                            <a
+                                href="inventory.html"
+                                class="cancel-button"
+                            >
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                    <p class="delete-note">
+                        Please verify the book ID before submitting.
+                        Deleting a record may permanently remove it
+                        from your bookstore database.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Website footer -->
+
+    <footer class="site-footer">
+        <div class="footer-content">
+
+            <span class="footer-brand">ALFISHA BOOKSTORE</span>
+
+            <p>
+                &copy; 2026 ALFISHA BOOKSTORE. All rights reserved.
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>

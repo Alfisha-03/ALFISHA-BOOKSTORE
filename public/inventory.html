@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Manage book inventory at ALFISHA BOOKSTORE."
+    >
+
+    <title>Inventory | ALFISHA BOOKSTORE</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            ALFISHA BOOKSTORE
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="books.html">Books</a>
+            <a href="categories.html">Categories</a>
+            <a href="inventory.html" class="active">Inventory</a>
+            <a href="about.html">About</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="inventory-page">
+
+    <!-- Inventory Heading -->
+    <section class="inventory-hero">
+        <p class="eyebrow">STORE MANAGEMENT</p>
+
+        <h1>Inventory Overview</h1>
+
+        <p>
+            Monitor availability, review stock levels and manage
+            your book collection.
+        </p>
+    </section>
+
+    <!-- Overall Inventory Summary -->
+    <section class="inventory-summary">
+
+        <div class="inventory-stat">
+            <span>Total Book Titles</span>
+            <h2>{{TOTAL_BOOKS}}</h2>
+            <p>Different titles in the catalogue</p>
+        </div>
+
+        <div class="inventory-stat">
+            <span>Total Stock Units</span>
+            <h2>{{TOTAL_STOCK}}</h2>
+            <p>Copies across all book titles</p>
+        </div>
+
+        <div class="inventory-stat">
+            <span>Low Stock</span>
+            <h2>{{LOW_STOCK}}</h2>
+            <p>Titles with 1–5 copies left</p>
+        </div>
+
+        <div class="inventory-stat">
+            <span>Out of Stock</span>
+            <h2>{{OUT_STOCK}}</h2>
+            <p>Titles requiring restocking</p>
+        </div>
+
+    </section>
+
+    <!-- Inventory Table -->
+    <section class="inventory-content">
+
+        <div class="inventory-heading">
+
+            <div>
+                <p class="eyebrow">STOCK REGISTER</p>
+
+                <h2>Book Inventory</h2>
+
+                <p>
+                    Select a book by its name and ID or filter
+                    books by their stock status.
+                </p>
+            </div>
+
+            <div class="inventory-actions">
+
+    <a href="add-book.html" class="btn btn-primary">
+        + Add New Book
+    </a>
+
+    <a href="delete-book.html" class="inventory-action">
+        Delete Book
+    </a>
+
+</div>
+
+        </div>
+
+        <!-- Book Selection and Stock Filter -->
+        <form
+            class="inventory-toolbar"
+            action="inventory.html"
+            method="GET"
+        >
+
+            <select
+                name="bookId"
+                aria-label="Select a book by name and ID"
+            >
+                <option
+                    value="all"
+                    {{ALL_BOOKS_SELECTED}}
+                >
+                    All Books
+                </option>
+
+                {{BOOK_OPTIONS}}
+            </select>
+
+            <select
+                name="status"
+                aria-label="Filter stock status"
+            >
+                <option value="all" {{ALL_SELECTED}}>
+                    All Stock Statuses
+                </option>
+
+                <option value="available" {{AVAILABLE_SELECTED}}>
+                    In Stock
+                </option>
+
+                <option value="low" {{LOW_SELECTED}}>
+                    Low Stock
+                </option>
+
+                <option value="out" {{OUT_SELECTED}}>
+                    Out of Stock
+                </option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">
+                Search / Filter
+            </button>
+
+            <a
+                href="inventory.html"
+                class="inventory-action"
+            >
+                Reset
+            </a>
+
+        </form>
+
+        <!-- Number of Matching Books -->
+        <p id="inventory-message" role="status">
+            {{RESULT_COUNT}} book title(s) displayed.
+        </p>
+
+        <!-- Inventory Records -->
+        <div class="table-wrapper">
+
+            <table class="inventory-table">
+
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Book Details</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{BOOK_ROWS}}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>Developed by Alfisha · 2026</p>
+</footer>
+
+</body>
+</html>

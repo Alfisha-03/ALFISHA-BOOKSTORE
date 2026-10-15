@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book | ALFISHA BOOKSTORE</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .add-book-page {
+            max-width: 1000px;
+            margin: 42px auto;
+            padding: 0 24px;
+        }
+
+        .add-book-heading {
+            margin-bottom: 28px;
+        }
+
+        .add-book-heading h1 {
+            color: #365D59;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .add-book-heading p {
+            color: #69767B;
+            line-height: 1.7;
+        }
+
+        .add-book-form {
+            background: #fff;
+            border: 1px solid #DCE3E0;
+            border-radius: 10px;
+            padding: 32px;
+            box-shadow: 0 5px 20px rgba(35, 65, 55, 0.06);
+        }
+
+        .form-section-title {
+            color: #365D59;
+            font-size: 19px;
+            margin: 0 0 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #DCE3E0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #34434A;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 46px;
+            padding: 12px 14px;
+            border: 1px solid #CDD8D3;
+            border-radius: 6px;
+            background: #fff;
+            color: #34434A;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #527D78;
+            box-shadow: 0 0 0 3px rgba(82, 125, 120, 0.12);
+        }
+
+        .form-help {
+            color: #69767B;
+            font-size: 12px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1px solid #DCE3E0;
+        }
+
+        .form-button {
+            min-height: 44px;
+            padding: 0 22px;
+            border-radius: 6px;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .clear-button {
+            background: #fff;
+            color: #365D59;
+            border: 1px solid #B9CBC4;
+        }
+
+        .submit-button {
+            background: #527D78;
+            color: #fff;
+            border: 1px solid #527D78;
+        }
+
+        .submit-button:hover {
+            background: #365D59;
+        }
+
+        @media (max-width: 650px) {
+            .add-book-page {
+                margin: 28px auto;
+                padding: 0 16px;
+            }
+
+            .add-book-form {
+                padding: 22px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .add-book-heading h1 {
+                font-size: 26px;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .form-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <span class="brand-mark">A</span>
+                <span class="brand-text">ALFISHA BOOKSTORE</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="books.html">Book Collection</a>
+                <a href="categories.html">Categories</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="about.html">About</a>
+                <a href="add-book.html" class="button button-primary nav-button active">
+                    Add New Book
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="add-book-page">
+
+        <div class="add-book-heading">
+            <h1>Add New Book</h1>
+            <p>Enter the details below to add a book to your bookstore inventory.</p>
+        </div>
+
+        <form class="add-book-form" action="/books/add" method="POST">
+
+            <h2 class="form-section-title">Book Information</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="title">Book Title *</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Enter book title"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author *</label>
+                    <input
+                        type="text"
+                        id="author"
+                        name="author"
+                        placeholder="Enter author's name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Self-Help">Self-Help</option>
+                        <option value="Education">Education</option>
+                        <option value="Science">Science</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price (₹) *</label>
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        placeholder="Enter price"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">Available Stock *</label>
+                    <input
+                        type="number"
+                        id="stock"
+                        name="stock"
+                        placeholder="Enter stock quantity"
+                        min="0"
+                        step="1"
+                        required
+                    >
+                    <span class="form-help">Enter the number of copies available.</span>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="reset" class="form-button clear-button">
+                    Clear Form
+                </button>
+
+                <button type="submit" class="form-button submit-button">
+                    Add Book
+                </button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Developed by Alfisha · 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
